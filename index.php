@@ -35,7 +35,7 @@
                     ?>
                 </div>
                 <div class="card-footer text-center">
-                <h4>Php Foundamenta</h4>
+                <h4>Php Foundamental</h4>
 
                 </div>
             </div>

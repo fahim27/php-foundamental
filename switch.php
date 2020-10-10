@@ -15,28 +15,28 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3>Php String -helpfull method</h3>
+                    <h3>Php  -Switch</h3>
                 </div>
                 <div class="card-body">
                     <?php
                     
-                    $string="php is awsome";
-                    echo "string: " .$string . "<br/>";
+                    $string="phpp";
 
-                    //return the srirng lenth
-                    echo 'string length: '. strlen($string). "<br/>";
+                    switch($string){
 
-                    //count the string word
-                    echo 'string word count: '. str_word_count($string). "<br/>";
+                      case "php";
+                      echo "i love .".$string;
+                      break;
 
-                    //reverse the string
-                    echo 'Reverse the string: '. strrev($string). "<br/>";
+                      case "java";
+                      echo "i love .".$string;
+                      break;
 
-                      //replace the specific word or chararecter from string 
-                     echo 'string replace: '. str_replace('php','java-script',$string). "<br/>";
+                      default ;
+                      echo "i love .".$string;
 
-                      //find the specific word or character position from string 
-                      echo 'string positon: '. strrpos($string,'php'). "<br/>";
+                    };
+                   
 
 
                     ?>

@@ -15,23 +15,30 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3>Php Foundamenta</h3>
+                    <h3>Php String -helpfull method</h3>
                 </div>
                 <div class="card-body">
                     <?php
                     
-                    class student{
-                        
-                        function department($a){
-                               return $a; 
-                        }
-                        function teach(){
-                            return $this->department(10);
-                        }
-                    };
+                    $string="php is awsome";
+                    echo "string: " .$string . "<br/>";
 
-                    $class=new student();
-                    echo $class->teach();
+                    //return the srirng lenth
+                    echo 'string length: '. strlen($string). "<br/>";
+
+                    //count the string word
+                    echo 'string word count: '. str_word_count($string). "<br/>";
+
+                    //reverse the string
+                    echo 'Reverse the string: '. strrev($string). "<br/>";
+
+                      //replace the specific word or chararecter from string 
+                     echo 'string replace: '. str_replace('php','java-script',$string). "<br/>";
+
+                      //find the specific word or character position from string 
+                      echo 'string positon: '. strrpos($string,'php'). "<br/>";
+
+
                     ?>
                 </div>
                 <div class="card-footer text-center">

@@ -6,18 +6,21 @@
 
     $user=new User();
 
-    if(isset($_POST['submit'])){
+   if(isset($_POST['submit'])){
 
         $name=$_POST['name'];
         $email=$_POST['email'];
         $phone=$_POST['phone'];
+        $id=$_POST['id'];
 
         $user->setName($name);
         $user->setEmail($email);
         $user->setPhone($phone);
 
-        if($user->insert()){
-            echo "data insert successfully";
+        if($user->update($id)){
+            echo "data updated successfully";
+ 
+            
         }
 
 
@@ -25,15 +28,7 @@
 
     if(isset($_GET['action']) && $_GET['action']=='edit'){
             $id=(int)$_GET['id'];
-            $user->edit($id);
-    }
-
-    
-    if(isset($_GET['action']) && $_GET['action']=='delete'){
-            $id=(int)$_GET['id'];
-            if($user->delete($id)){
-                echo "data delete successfully";
-            }
+            $result=$user->edit($id);
     }
 
 ?>
@@ -63,60 +58,25 @@
                             <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" name="name" class="form-control">
+                                     <input type="hidden" value="<?php echo $result['id'] ?>" name="id" class="form-control">
+
+                                    <input type="text" value="<?php echo $result['name'] ?>" name="name" class="form-control">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" name="email" class="form-control">
+                                    <input type="text" value="<?php echo $result['email'] ?>" name="email" class="form-control">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input type="text" name="phone" class="form-control">
+                                    <input type="text" value="<?php echo $result['phone'] ?>" name="phone" class="form-control">
                                 </div>
 
                                 <input class="btn btn-primary btn-block" type="submit" value="submit" name="submit" />
                             </form>
                         </div>
-                        <div class="col-lg-6">
-                        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Action</th>
-
-    </tr>
-  </thead>
-  <tbody>
-      <?php
-      $i=1;
-       foreach($user->all() as $user){ 
-      ?>
-    <tr>
-      <th scope="row"><?php  echo $i++ ?></th>
-      <td><?php echo $user['name']?></td>
-      <td><?php echo $user['email']?></td>
-      <td><?php echo $user['phone']?></td>
-      <td>
-          <?php
-            echo "<a href='edit.php?action=edit&id=".$user['id']."' class='btn btn-success btn-sm'>Edit</a>";
-          echo "<a href='index.php?action=delete&id=".$user['id']."' class='btn btn-danger btn-sm' onclick='return confirm(\"are you sure...\")'>Delete</a>";
-
-          ?>    
-      </td>
-
-    </tr>
-    <tr>
-<?php }?>     
-   
-    </tr>
-  </tbody>
-</table>
-                          </div>
+                       
                     </div>
                 </div>
                 <div class="card-footer text-center">
